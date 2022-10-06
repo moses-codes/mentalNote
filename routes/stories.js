@@ -116,5 +116,18 @@ router.put('/:id', ensureAuth, async (req,res) => {
     }
 })
 
+//@desc delete 1 story
+//@route DELETE /stories/:id
+
+router.delete('/:id', ensureAuth, async (req,res) => {
+   try{
+    await Story.remove({_id: req.params.id})
+    res.redirect('/')
+   }catch (err){
+    console.error(err)
+   }
+})
+
+
 
 module.exports = router
